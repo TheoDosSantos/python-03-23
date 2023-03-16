@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Desktop - Config</title>
+</head>
+<body>
+    <main>
+        <section class="section-title">
+            <div class="container-title">
+                <h1>Hello {{ username }} !</h1>
+                <p class="subtitle">You can find below few informations about your current desktop configuration</p>
+            </div>
+        </section>
+        <section class="section-cards">
+            <div class="container-cards">
+                {% for info in infos %}
+                    <div class="card">
+                        <p class="card-title">{{info}}</p>
+                        <p class="card-text">{{infos[info]}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <script>
+        window.addEventListener('load',()=>{
+            let cards = document.querySelectorAll('.card');
+            let delay = 200
+            cards.forEach(function(card, i){
+                delay += 120;
+                setTimeout(() => {
+                    if(!card.classList.contains('style-active')){
+                        card.classList.add('style-active');
+                    }
+                }, delay);
+            })
+        })
+
+    </script>
+</body>
+</html>
